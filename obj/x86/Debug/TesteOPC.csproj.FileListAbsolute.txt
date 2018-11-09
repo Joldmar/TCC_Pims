@@ -1,0 +1,29 @@
+C:\Users\soteica\documents\visual studio 2010\Projects\TesteOPC\TesteOPC\bin\Debug\TesteOPC.exe
+C:\Users\soteica\documents\visual studio 2010\Projects\TesteOPC\TesteOPC\bin\Debug\TesteOPC.pdb
+C:\Users\soteica\documents\visual studio 2010\Projects\TesteOPC\TesteOPC\bin\Debug\OpcDaNet.Net4.dll
+C:\Users\soteica\documents\visual studio 2010\Projects\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.csprojResolveAssemblyReference.cache
+C:\Users\soteica\documents\visual studio 2010\Projects\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.Form1.resources
+C:\Users\soteica\documents\visual studio 2010\Projects\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.Properties.Resources.resources
+C:\Users\soteica\documents\visual studio 2010\Projects\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.csproj.GenerateResource.Cache
+C:\Users\soteica\documents\visual studio 2010\Projects\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.exe
+C:\Users\soteica\documents\visual studio 2010\Projects\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.pdb
+D:\Faculdade\TCC\TesteOPC\TesteOPC\TesteOPC\bin\Debug\TesteOPC.exe
+D:\Faculdade\TCC\TesteOPC\TesteOPC\TesteOPC\bin\Debug\TesteOPC.pdb
+D:\Faculdade\TCC\TesteOPC\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.csprojAssemblyReference.cache
+D:\Faculdade\TCC\TesteOPC\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.Form1.resources
+D:\Faculdade\TCC\TesteOPC\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.Properties.Resources.resources
+D:\Faculdade\TCC\TesteOPC\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.csproj.GenerateResource.cache
+D:\Faculdade\TCC\TesteOPC\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.csproj.CoreCompileInputs.cache
+D:\Faculdade\TCC\TesteOPC\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.csproj.CopyComplete
+D:\Faculdade\TCC\TesteOPC\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.exe
+D:\Faculdade\TCC\TesteOPC\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.pdb
+Z:\D\Faculdade\TCC\TesteOPC\TesteOPC\TesteOPC\bin\Debug\TesteOPC.exe
+Z:\D\Faculdade\TCC\TesteOPC\TesteOPC\TesteOPC\bin\Debug\TesteOPC.pdb
+Z:\D\Faculdade\TCC\TesteOPC\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.csprojAssemblyReference.cache
+Z:\D\Faculdade\TCC\TesteOPC\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.Form1.resources
+Z:\D\Faculdade\TCC\TesteOPC\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.Properties.Resources.resources
+Z:\D\Faculdade\TCC\TesteOPC\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.csproj.GenerateResource.cache
+Z:\D\Faculdade\TCC\TesteOPC\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.csproj.CoreCompileInputs.cache
+Z:\D\Faculdade\TCC\TesteOPC\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.csproj.CopyComplete
+Z:\D\Faculdade\TCC\TesteOPC\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.exe
+Z:\D\Faculdade\TCC\TesteOPC\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.pdb

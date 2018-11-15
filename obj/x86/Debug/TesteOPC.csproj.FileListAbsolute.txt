@@ -27,3 +27,24 @@ Z:\D\Faculdade\TCC\TesteOPC\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.csproj.Core
 Z:\D\Faculdade\TCC\TesteOPC\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.csproj.CopyComplete
 Z:\D\Faculdade\TCC\TesteOPC\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.exe
 Z:\D\Faculdade\TCC\TesteOPC\TesteOPC\TesteOPC\obj\x86\Debug\TesteOPC.pdb
+C:\Users\155 IRON\Documents\GitHub\TCC_Pims\bin\Debug\TesteOPC.exe
+C:\Users\155 IRON\Documents\GitHub\TCC_Pims\bin\Debug\TesteOPC.pdb
+C:\Users\155 IRON\Documents\GitHub\TCC_Pims\obj\x86\Debug\TesteOPC.csprojAssemblyReference.cache
+C:\Users\155 IRON\Documents\GitHub\TCC_Pims\obj\x86\Debug\TesteOPC.Form1.resources
+C:\Users\155 IRON\Documents\GitHub\TCC_Pims\obj\x86\Debug\TesteOPC.Properties.Resources.resources
+C:\Users\155 IRON\Documents\GitHub\TCC_Pims\obj\x86\Debug\TesteOPC.csproj.GenerateResource.cache
+C:\Users\155 IRON\Documents\GitHub\TCC_Pims\obj\x86\Debug\TesteOPC.csproj.CoreCompileInputs.cache
+C:\Users\155 IRON\Documents\GitHub\TCC_Pims\obj\x86\Debug\TesteOPC.csproj.CopyComplete
+C:\Users\155 IRON\Documents\GitHub\TCC_Pims\obj\x86\Debug\TesteOPC.exe
+C:\Users\155 IRON\Documents\GitHub\TCC_Pims\obj\x86\Debug\TesteOPC.pdb
+Z:\GitHub\TCC_Pims\bin\Debug\TesteOPC.exe
+Z:\GitHub\TCC_Pims\bin\Debug\TesteOPC.pdb
+Z:\GitHub\TCC_Pims\obj\x86\Debug\TesteOPC.csprojAssemblyReference.cache
+Z:\GitHub\TCC_Pims\obj\x86\Debug\TesteOPC.Form1.resources
+Z:\GitHub\TCC_Pims\obj\x86\Debug\TesteOPC.Properties.Resources.resources
+Z:\GitHub\TCC_Pims\obj\x86\Debug\TesteOPC.csproj.GenerateResource.cache
+Z:\GitHub\TCC_Pims\obj\x86\Debug\TesteOPC.csproj.CoreCompileInputs.cache
+Z:\GitHub\TCC_Pims\obj\x86\Debug\TesteOPC.csproj.CopyComplete
+Z:\GitHub\TCC_Pims\obj\x86\Debug\TesteOPC.exe
+Z:\GitHub\TCC_Pims\obj\x86\Debug\TesteOPC.pdb
+Z:\GitHub\TCC_Pims\bin\Debug\TesteOPC.exe.config

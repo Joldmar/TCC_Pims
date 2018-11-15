@@ -55,6 +55,21 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="IloggerDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IloggerDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IloggerDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IloggerDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IloggerDataSetUsuarios.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IloggerDataSetUsuarios.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -69,6 +84,40 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="app.config" />
+    <None Include="IloggerDataSet.xsc">
+      <DependentUpon>IloggerDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="IloggerDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IloggerDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IloggerDataSet.xss">
+      <DependentUpon>IloggerDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="IloggerDataSet1.xsc">
+      <DependentUpon>IloggerDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="IloggerDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IloggerDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IloggerDataSet1.xss">
+      <DependentUpon>IloggerDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="IloggerDataSetUsuarios.xsc">
+      <DependentUpon>IloggerDataSetUsuarios.xsd</DependentUpon>
+    </None>
+    <None Include="IloggerDataSetUsuarios.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IloggerDataSetUsuarios.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IloggerDataSetUsuarios.xss">
+      <DependentUpon>IloggerDataSetUsuarios.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

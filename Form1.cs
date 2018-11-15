@@ -43,15 +43,57 @@ namespace TesteOPC
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'iloggerDataSet1.tblUsuarios' table. You can move, or remove it, as needed.
+            //this.iloggerDataSet1.tblUsuarios.DefaultView.RowFilter = "status = 1";
+
+            this.tblUsuariosTableAdapter1.Fill(this.iloggerDataSet1.tblUsuarios);
+
+
+            // TODO: This line of code loads data into the 'iloggerDataSetUsuarios.tblUsuarios' table. You can move, or remove it, as needed.
+            //this.iloggerDataSetUsuarios.Tables[0].Select("SELECT id, nome, login, senha, data_criacao,  cargo, status FROM [Ilogger].[dbo].[tblUsuarios] WHERE status = 1");
+            // this.tblUsuariosTableAdapter.Fill(this.iloggerDataSetUsuarios.tblUsuarios);
+            // TODO: This line of code loads data into the 'iloggerDataSet.tblCargos' table. You can move, or remove it, as needed.
+            this.tblCargosTableAdapter.Fill(this.iloggerDataSet.tblCargos);
             tb_tempoScan.Text = "1000";
             Int32.TryParse(tb_tempoScan.Text, out tempoScan);
             cb_Servidores.SelectedIndex = 0;
             cb_Cargo.SelectedIndex = 0;
             tb_servidor_sql.SelectedIndex = 0;
+
+            // setInvisible();
+
         }
+        /*
+        private void setInvisible()
+        {
+            for (int i = 1; i < dG_Usuarios.RowCount - 1; i++)
+            {
+
+                
+                //int b = (int)dG_Usuarios.Rows[i].Cells[5].Value;
+
+                try
+                {
+                    dG_Usuarios.Rows[i].Visible = false;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show(" erro");
+                    throw;
+                }
+           
+                    int index = dG_Usuarios.Rows[i].Index;
+                    MessageBox.Show("valor do indice: " + index);
+
+                
+
+                MessageBox.Show("valor do i: " + i);
+
+            }
 
 
-
+        }
+        */
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -563,9 +605,8 @@ namespace TesteOPC
 
                         try
                         {
-
                             SqlCommand cmd = conexao.CreateCommand();
-                            string teste = "INSERT INTO[Ilogger].[dbo].[tblUsuarios]([nome],[login],[senha],[cargo],[status])VALUES('" + tb_nome_usuario.Text + "','" + loginUsuario + "','" + tb_senha_usuario.Text + "',2,1)";
+                            string teste = "INSERT INTO[Ilogger].[dbo].[tblUsuarios]([nome],[login],[senha],[cargo],[status])VALUES('" + tb_nome_usuario.Text + "','" + loginUsuario + "','" + tb_senha_usuario.Text + "','" + cb_Cargo.Text + "',1)";
                             cmd.CommandText = teste;
 
                             try
@@ -631,14 +672,15 @@ namespace TesteOPC
                         {
 
                             SqlCommand cmd = conexao.CreateCommand();
-                            string teste = "INSERT INTO[Ilogger].[dbo].[tblCargos]([nome],[nivel])VALUES('" + tb_nome_usuario.Text + "','" + cargo + "','" + tb_cad_nivel + ")";
-                            cmd.CommandText = teste;
+                            cmd.CommandText = "INSERT INTO[Ilogger].[dbo].[tblCargos]([nome],[nivel])VALUES('" + cargo + "'," + tb_cad_nivel.Text + ")";
 
                             try
                             {
                                 cmd.ExecuteNonQuery();
                                 lb_addUser.Text = "Cargo Adicionado!";
                                 MessageBox.Show("Cargo adicionado com sucesso!");
+
+
                             }
                             catch (Exception)
                             {
@@ -652,9 +694,8 @@ namespace TesteOPC
                             MessageBox.Show("Erro SQL ao tentar adicionar o cargo.");
                         }
 
-                        tb_nome_usuario.Text = "";
+                        tb_cad_nivel.Text = "";
                         tb_cad_cargo.Text = "";
-                        conexao.Close();
 
                     }
 
@@ -662,13 +703,149 @@ namespace TesteOPC
                 else
                 {
                     MessageBox.Show("Não é possível adicionar um cargo. Preencha esse campo com no minímo 3 caracteres!");
+
                 }
             }
             else
             {
                 MessageBox.Show("Não é possível adicionar um cargo sem definir seu nível. Este campo deve ser preenchido com valores de 1 a 5, sendo 5 maior nível hierárquico!");
             }
+            conexao.Close();
         }
+        //=====================================================================================================================================
+        private void deletarCargo(string id)// Exclui cargo da lista de cargos
+        {
+            if (!abrir_conexao())
+            {
+                return;
+
+            }
+
+            SqlCommand cmd = conexao.CreateCommand();
+            cmd.CommandText = "DELETE FROM[Ilogger].[dbo].[tblCargos] WHERE id = " + id;
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Cargo deletado com sucesso!");
+
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Não foi possível deletar o cargo");
+            }
+            conexao.Close();
+        }
+        //=====================================================================================================================================
+        private void atualizaDataGridCargo()// atualiza a lista de cargos
+        {
+            if (!abrir_conexao())
+            {
+                MessageBox.Show("Erro ao abrir conexão com o banco de dados");
+                return;
+            }
+            string strSQL = "SELECT id, nome, nivel FROM [Ilogger].[dbo].[tblCargos]";
+            SqlCommand objcommand = new SqlCommand(strSQL, conexao);
+
+            try
+            {
+
+                SqlDataAdapter objAdp = new SqlDataAdapter(objcommand);
+
+                DataTable dtLista = new DataTable();
+
+                objAdp.Fill(dtLista);
+
+                dgCargo.DataSource = dtLista;
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("erro");
+            }
+            conexao.Close();
+        }
+        //=====================================================================================================================================
+        private void deletarUsuario(string id)// Excluir usuário do banco de dados
+        {
+            if (!abrir_conexao())
+            {
+                return;
+
+            }
+
+            SqlCommand cmd = conexao.CreateCommand();
+            cmd.CommandText = "UPDATE [Ilogger].[dbo].[tblUsuarios]SET [status] = 0 WHERE id =" + id;
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Usuário deletado com sucesso!");
+
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Não foi possível deletar o usuário");
+            }
+            conexao.Close();
+        }
+        //================================================================================================================================================================
+        private void atualizaDataGridUsuario()// Atualiza a lista de usuários
+        {
+            if (!abrir_conexao())
+            {
+                MessageBox.Show("Erro ao abrir conexão com o banco de dados");
+                return;
+            }
+            string strSQL = "SELECT id, nome, login, senha, data_criacao,  cargo, status FROM [Ilogger].[dbo].[tblUsuarios] WHERE status = 1";
+            SqlCommand objcommand = new SqlCommand(strSQL, conexao);
+
+            try
+            {
+
+                SqlDataAdapter objAdp = new SqlDataAdapter(objcommand);
+
+                DataTable dtLista = new DataTable();
+
+                objAdp.Fill(dtLista);
+
+                dG_Usuarios.DataSource = dtLista;
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("erro");
+            }
+            conexao.Close();
+        }
+        //================================================================================================================================================================
+        private void alterasenha(string id)// Redefinir senha do usuário
+        {
+            if (!abrir_conexao())
+            {
+                return;
+
+            }
+
+            SqlCommand cmd = conexao.CreateCommand();
+            cmd.CommandText = "UPDATE [Ilogger].[dbo].[tblUsuarios] SET[senha] =('" + tb_nova_senha_usuario.Text + "')  WHERE id =" + id;
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Senha alterada com sucesso!");
+
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Não foi possível alterar senha do usuário");
+            }
+            conexao.Close();
+        }
+        //=====================================================================================================================================
 
 
         private void label9_Click(object sender, EventArgs e)
@@ -722,12 +899,125 @@ namespace TesteOPC
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgCargo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
+
+        private void btn_cad_cargo_Click(object sender, EventArgs e)
+        {
+            add_cargo();
+            atualizaDataGridCargo();
+
+        }
+
+        private void fillByToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.tblCargosTableAdapter.FillBy(this.iloggerDataSet.tblCargos);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void dgCargo_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            tb_servidor_sql.SelectedIndex = 1;
+            tb_usuario_sql.Text = "sa";
+            tb_senha_sql.Text = "PlantPAx4";
+            criar_conexao();
+        }
+
+        private void btn_excluir_cargo_Click(object sender, EventArgs e)
+        {
+            int selectedrowindex = dgCargo.SelectedCells[0].RowIndex;
+
+            DataGridViewRow selectedRow = dgCargo.Rows[selectedrowindex];
+
+            string id = Convert.ToString(selectedRow.Cells[0].Value);
+
+
+            deletarCargo(id);
+            atualizaDataGridCargo();
+        }
+
+        private void btn_excluir_usuario_Click(object sender, EventArgs e)
+        {
+
+            int selectedrowindex = dG_Usuarios.SelectedCells[0].RowIndex;
+
+            DataGridViewRow selectedRow = dG_Usuarios.Rows[selectedrowindex];
+
+            string id = Convert.ToString(selectedRow.Cells[0].Value);
+
+
+            deletarUsuario(id);
+            atualizaDataGridUsuario();
+        }
+
+        //private void btn_altera_senha_Click(object sender, EventArgs e)
+        private void btn_altera_senha_Click_1(object sender, EventArgs e)
+        {
+            int selectedrowindex = dG_Usuarios.SelectedCells[0].RowIndex;
+
+            DataGridViewRow selectedRow = dG_Usuarios.Rows[selectedrowindex];
+
+            string id = Convert.ToString(selectedRow.Cells[0].Value);
+
+
+            alterasenha(id);
+
+        }
+
+        private void fillByToolStripButton_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                this.tblUsuariosTableAdapter.FillBy(this.iloggerDataSetUsuarios.tblUsuarios);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void fillByToolStripButton_Click_2(object sender, EventArgs e)
+        {
+            try
+            {
+                this.tblUsuariosTableAdapter1.FillBy(this.iloggerDataSet1.tblUsuarios);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void dG_Usuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button6_Click_2(object sender, EventArgs e)
+        {
+            //setInvisible();
+        }
+
+
     }
 }
+
 
 
 

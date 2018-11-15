@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.bwLer = new System.ComponentModel.BackgroundWorker();
@@ -54,6 +55,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button7 = new System.Windows.Forms.Button();
             this.lb_nomeDoBanco = new System.Windows.Forms.Label();
             this.btn_criarBanco = new System.Windows.Forms.Button();
             this.lb_serverStatus = new System.Windows.Forms.Label();
@@ -65,44 +67,26 @@
             this.tb_servidor_sql = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.lb_altera_Senha = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.tb_nova_senha_usuario = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.tb_altera_usuario = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.lb_removeUser = new System.Windows.Forms.Label();
-            this.cb_Usuarios = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.btn_remove_usuario = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.tb_nome_usuario = new System.Windows.Forms.TextBox();
             this.lb_addUser = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.cb_Cargo = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.tb_senha_usuario = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btn_add_usuario = new System.Windows.Forms.Button();
             this.tb_add_usuario = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.btn_add_usuario = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.cb_Cargo = new System.Windows.Forms.ComboBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.tb_nome_usuario = new System.Windows.Forms.TextBox();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.dG_Usuarios = new System.Windows.Forms.DataGridView();
-            this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvCargos = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCargo = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nivelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tblCargosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.iloggerDataSet = new TesteOPC.IloggerDataSet();
+            this.btn_excluir_cargo = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label22 = new System.Windows.Forms.Label();
             this.tb_cad_cargo = new System.Windows.Forms.TextBox();
@@ -111,8 +95,30 @@
             this.btn_cad_cargo = new System.Windows.Forms.Button();
             this.tb_cad_nivel = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
-            this.btn_altera_cargo = new System.Windows.Forms.Button();
-            this.btn_excluir_cargo = new System.Windows.Forms.Button();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.lb_altera_Senha = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.tb_nova_senha_usuario = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.btn_altera_senha = new System.Windows.Forms.Button();
+            this.btn_excluir_usuario = new System.Windows.Forms.Button();
+            this.dG_Usuarios = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.loginDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datacriacaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cargoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tblUsuariosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.iloggerDataSet1 = new TesteOPC.IloggerDataSet1();
+            this.tblUsuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.iloggerDataSetUsuarios = new TesteOPC.IloggerDataSetUsuarios();
+            this.tblCargosTableAdapter = new TesteOPC.IloggerDataSetTableAdapters.tblCargosTableAdapter();
+            this.tblUsuariosTableAdapter = new TesteOPC.IloggerDataSetUsuariosTableAdapters.tblUsuariosTableAdapter();
+            this.tblUsuariosTableAdapter1 = new TesteOPC.IloggerDataSet1TableAdapters.tblUsuariosTableAdapter();
+            this.tblCargosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -121,14 +127,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.tb_tempoScan)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dG_Usuarios)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCargos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCargo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblCargosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iloggerDataSet)).BeginInit();
             this.groupBox7.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dG_Usuarios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblUsuariosBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iloggerDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblUsuariosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iloggerDataSetUsuarios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblCargosBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // button3
@@ -398,6 +410,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button7);
             this.tabPage2.Controls.Add(this.lb_nomeDoBanco);
             this.tabPage2.Controls.Add(this.btn_criarBanco);
             this.tabPage2.Controls.Add(this.lb_serverStatus);
@@ -415,6 +428,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Conf.ODBC";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(285, 49);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(158, 23);
+            this.button7.TabIndex = 19;
+            this.button7.Text = "Testar Conexão";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // lb_nomeDoBanco
             // 
@@ -514,8 +537,6 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.groupBox6);
-            this.tabPage3.Controls.Add(this.groupBox5);
             this.tabPage3.Controls.Add(this.groupBox2);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -524,161 +545,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Conf.Usuario";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.lb_altera_Senha);
-            this.groupBox6.Controls.Add(this.label14);
-            this.groupBox6.Controls.Add(this.label17);
-            this.groupBox6.Controls.Add(this.tb_nova_senha_usuario);
-            this.groupBox6.Controls.Add(this.label18);
-            this.groupBox6.Controls.Add(this.tb_altera_usuario);
-            this.groupBox6.Controls.Add(this.label19);
-            this.groupBox6.Controls.Add(this.button6);
-            this.groupBox6.Location = new System.Drawing.Point(3, 232);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(449, 95);
-            this.groupBox6.TabIndex = 17;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Alterar Senha";
-            // 
-            // lb_altera_Senha
-            // 
-            this.lb_altera_Senha.AutoSize = true;
-            this.lb_altera_Senha.Location = new System.Drawing.Point(6, 63);
-            this.lb_altera_Senha.Name = "lb_altera_Senha";
-            this.lb_altera_Senha.Size = new System.Drawing.Size(10, 13);
-            this.lb_altera_Senha.TabIndex = 20;
-            this.lb_altera_Senha.Text = " ";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 63);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(10, 13);
-            this.label14.TabIndex = 16;
-            this.label14.Text = " ";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(169, 24);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(70, 13);
-            this.label17.TabIndex = 10;
-            this.label17.Text = "Nova Senha:";
-            // 
-            // tb_nova_senha_usuario
-            // 
-            this.tb_nova_senha_usuario.Location = new System.Drawing.Point(172, 40);
-            this.tb_nova_senha_usuario.Name = "tb_nova_senha_usuario";
-            this.tb_nova_senha_usuario.Size = new System.Drawing.Size(92, 20);
-            this.tb_nova_senha_usuario.TabIndex = 9;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(6, 24);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(36, 13);
-            this.label18.TabIndex = 5;
-            this.label18.Text = "Login:";
-            // 
-            // tb_altera_usuario
-            // 
-            this.tb_altera_usuario.Location = new System.Drawing.Point(6, 40);
-            this.tb_altera_usuario.Name = "tb_altera_usuario";
-            this.tb_altera_usuario.Size = new System.Drawing.Size(150, 20);
-            this.tb_altera_usuario.TabIndex = 5;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(67, 15);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(0, 13);
-            this.label19.TabIndex = 4;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(285, 36);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(83, 26);
-            this.button6.TabIndex = 0;
-            this.button6.Text = "Alterar";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.lb_removeUser);
-            this.groupBox5.Controls.Add(this.cb_Usuarios);
-            this.groupBox5.Controls.Add(this.label13);
-            this.groupBox5.Controls.Add(this.label15);
-            this.groupBox5.Controls.Add(this.label16);
-            this.groupBox5.Controls.Add(this.btn_remove_usuario);
-            this.groupBox5.Location = new System.Drawing.Point(3, 131);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(449, 95);
-            this.groupBox5.TabIndex = 17;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Rmover Usuários";
-            // 
-            // lb_removeUser
-            // 
-            this.lb_removeUser.AutoSize = true;
-            this.lb_removeUser.Location = new System.Drawing.Point(6, 64);
-            this.lb_removeUser.Name = "lb_removeUser";
-            this.lb_removeUser.Size = new System.Drawing.Size(10, 13);
-            this.lb_removeUser.TabIndex = 19;
-            this.lb_removeUser.Text = " ";
-            // 
-            // cb_Usuarios
-            // 
-            this.cb_Usuarios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_Usuarios.FormattingEnabled = true;
-            this.cb_Usuarios.Items.AddRange(new object[] {
-            "Selecione",
-            "EWS01\\FTVIEWX64TAGDB"});
-            this.cb_Usuarios.Location = new System.Drawing.Point(9, 40);
-            this.cb_Usuarios.Name = "cb_Usuarios";
-            this.cb_Usuarios.Size = new System.Drawing.Size(255, 21);
-            this.cb_Usuarios.TabIndex = 18;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 63);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(10, 13);
-            this.label13.TabIndex = 16;
-            this.label13.Text = " ";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 24);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(36, 13);
-            this.label15.TabIndex = 5;
-            this.label15.Text = "Login:";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(67, 15);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(0, 13);
-            this.label16.TabIndex = 4;
-            // 
-            // btn_remove_usuario
-            // 
-            this.btn_remove_usuario.Location = new System.Drawing.Point(285, 36);
-            this.btn_remove_usuario.Name = "btn_remove_usuario";
-            this.btn_remove_usuario.Size = new System.Drawing.Size(83, 26);
-            this.btn_remove_usuario.TabIndex = 0;
-            this.btn_remove_usuario.Text = "Remover";
-            this.btn_remove_usuario.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -700,6 +566,22 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Adicionar Usuários";
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(4, 18);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(38, 13);
+            this.label21.TabIndex = 22;
+            this.label21.Text = "Nome:";
+            // 
+            // tb_nome_usuario
+            // 
+            this.tb_nome_usuario.Location = new System.Drawing.Point(4, 34);
+            this.tb_nome_usuario.Name = "tb_nome_usuario";
+            this.tb_nome_usuario.Size = new System.Drawing.Size(350, 20);
+            this.tb_nome_usuario.TabIndex = 23;
+            // 
             // lb_addUser
             // 
             this.lb_addUser.AutoSize = true;
@@ -708,6 +590,27 @@
             this.lb_addUser.Size = new System.Drawing.Size(10, 13);
             this.lb_addUser.TabIndex = 16;
             this.lb_addUser.Text = " ";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(226, 60);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(38, 13);
+            this.label20.TabIndex = 21;
+            this.label20.Text = "Cargo:";
+            // 
+            // cb_Cargo
+            // 
+            this.cb_Cargo.DataSource = this.tblCargosBindingSource;
+            this.cb_Cargo.DisplayMember = "nome";
+            this.cb_Cargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_Cargo.FormattingEnabled = true;
+            this.cb_Cargo.Location = new System.Drawing.Point(229, 75);
+            this.cb_Cargo.Name = "cb_Cargo";
+            this.cb_Cargo.Size = new System.Drawing.Size(125, 21);
+            this.cb_Cargo.TabIndex = 20;
+            this.cb_Cargo.SelectedIndexChanged += new System.EventHandler(this.cb_Cargo_SelectedIndexChanged);
             // 
             // label12
             // 
@@ -736,6 +639,16 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Login:";
             // 
+            // btn_add_usuario
+            // 
+            this.btn_add_usuario.Location = new System.Drawing.Point(360, 72);
+            this.btn_add_usuario.Name = "btn_add_usuario";
+            this.btn_add_usuario.Size = new System.Drawing.Size(83, 26);
+            this.btn_add_usuario.TabIndex = 0;
+            this.btn_add_usuario.Text = "Adicionar";
+            this.btn_add_usuario.UseVisualStyleBackColor = true;
+            this.btn_add_usuario.Click += new System.EventHandler(this.btn_add_usuario_Click_1);
+            // 
             // tb_add_usuario
             // 
             this.tb_add_usuario.Location = new System.Drawing.Point(4, 76);
@@ -752,22 +665,12 @@
             this.label11.Size = new System.Drawing.Size(0, 13);
             this.label11.TabIndex = 4;
             // 
-            // btn_add_usuario
-            // 
-            this.btn_add_usuario.Location = new System.Drawing.Point(360, 72);
-            this.btn_add_usuario.Name = "btn_add_usuario";
-            this.btn_add_usuario.Size = new System.Drawing.Size(83, 26);
-            this.btn_add_usuario.TabIndex = 0;
-            this.btn_add_usuario.Text = "Adicionar";
-            this.btn_add_usuario.UseVisualStyleBackColor = true;
-            this.btn_add_usuario.Click += new System.EventHandler(this.btn_add_usuario_Click_1);
-            // 
             // tabPage4
             // 
+            this.tabPage4.AutoScroll = true;
+            this.tabPage4.Controls.Add(this.dgCargo);
             this.tabPage4.Controls.Add(this.btn_excluir_cargo);
-            this.tabPage4.Controls.Add(this.btn_altera_cargo);
             this.tabPage4.Controls.Add(this.groupBox7);
-            this.tabPage4.Controls.Add(this.dgvCargos);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -776,122 +679,63 @@
             this.tabPage4.Text = "Cad.Cargos";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // cb_Cargo
+            // dgCargo
             // 
-            this.cb_Cargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_Cargo.FormattingEnabled = true;
-            this.cb_Cargo.Items.AddRange(new object[] {
-            "---Selecione---",
-            "Operador",
-            "Enc. de Produção",
-            "Enc. de Manutenção",
-            "Gerente"});
-            this.cb_Cargo.Location = new System.Drawing.Point(229, 75);
-            this.cb_Cargo.Name = "cb_Cargo";
-            this.cb_Cargo.Size = new System.Drawing.Size(125, 21);
-            this.cb_Cargo.TabIndex = 20;
-            this.cb_Cargo.SelectedIndexChanged += new System.EventHandler(this.cb_Cargo_SelectedIndexChanged);
+            this.dgCargo.AllowUserToOrderColumns = true;
+            this.dgCargo.AutoGenerateColumns = false;
+            this.dgCargo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgCargo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.nomeDataGridViewTextBoxColumn,
+            this.nivelDataGridViewTextBoxColumn});
+            this.dgCargo.DataSource = this.tblCargosBindingSource;
+            this.dgCargo.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.dgCargo.Location = new System.Drawing.Point(6, 6);
+            this.dgCargo.MultiSelect = false;
+            this.dgCargo.Name = "dgCargo";
+            this.dgCargo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgCargo.Size = new System.Drawing.Size(443, 150);
+            this.dgCargo.TabIndex = 26;
+            this.dgCargo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCargo_CellContentClick_1);
             // 
-            // label20
+            // idDataGridViewTextBoxColumn
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(226, 60);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(38, 13);
-            this.label20.TabIndex = 21;
-            this.label20.Text = "Cargo:";
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // label21
+            // nomeDataGridViewTextBoxColumn
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(4, 18);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(38, 13);
-            this.label21.TabIndex = 22;
-            this.label21.Text = "Nome:";
+            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "nome";
+            this.nomeDataGridViewTextBoxColumn.HeaderText = "nome";
+            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
             // 
-            // tb_nome_usuario
+            // nivelDataGridViewTextBoxColumn
             // 
-            this.tb_nome_usuario.Location = new System.Drawing.Point(4, 34);
-            this.tb_nome_usuario.Name = "tb_nome_usuario";
-            this.tb_nome_usuario.Size = new System.Drawing.Size(350, 20);
-            this.tb_nome_usuario.TabIndex = 23;
+            this.nivelDataGridViewTextBoxColumn.DataPropertyName = "nivel";
+            this.nivelDataGridViewTextBoxColumn.HeaderText = "nivel";
+            this.nivelDataGridViewTextBoxColumn.Name = "nivelDataGridViewTextBoxColumn";
             // 
-            // tabPage5
+            // tblCargosBindingSource
             // 
-            this.tabPage5.Controls.Add(this.dG_Usuarios);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(458, 333);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Hist. Usuário";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            this.tblCargosBindingSource.DataMember = "tblCargos";
+            this.tblCargosBindingSource.DataSource = this.iloggerDataSet;
             // 
-            // dG_Usuarios
+            // iloggerDataSet
             // 
-            this.dG_Usuarios.AllowUserToDeleteRows = false;
-            this.dG_Usuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dG_Usuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Login,
-            this.Column1,
-            this.Column2});
-            this.dG_Usuarios.Location = new System.Drawing.Point(2, 0);
-            this.dG_Usuarios.Name = "dG_Usuarios";
-            this.dG_Usuarios.ReadOnly = true;
-            this.dG_Usuarios.Size = new System.Drawing.Size(455, 333);
-            this.dG_Usuarios.TabIndex = 10;
+            this.iloggerDataSet.DataSetName = "IloggerDataSet";
+            this.iloggerDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // Login
+            // btn_excluir_cargo
             // 
-            this.Login.HeaderText = "Usuário";
-            this.Login.Name = "Login";
-            this.Login.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Data Cadastro";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Último Acesso";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // dgvCargos
-            // 
-            this.dgvCargos.AllowUserToDeleteRows = false;
-            this.dgvCargos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCargos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3});
-            this.dgvCargos.Location = new System.Drawing.Point(2, 0);
-            this.dgvCargos.Name = "dgvCargos";
-            this.dgvCargos.ReadOnly = true;
-            this.dgvCargos.Size = new System.Drawing.Size(455, 170);
-            this.dgvCargos.TabIndex = 11;
-            this.dgvCargos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Usuário";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Data Cadastro";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Último Acesso";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.btn_excluir_cargo.Location = new System.Drawing.Point(366, 189);
+            this.btn_excluir_cargo.Name = "btn_excluir_cargo";
+            this.btn_excluir_cargo.Size = new System.Drawing.Size(83, 26);
+            this.btn_excluir_cargo.TabIndex = 25;
+            this.btn_excluir_cargo.Text = "Excluir";
+            this.btn_excluir_cargo.UseVisualStyleBackColor = true;
+            this.btn_excluir_cargo.Click += new System.EventHandler(this.btn_excluir_cargo_Click);
             // 
             // groupBox7
             // 
@@ -951,13 +795,14 @@
             this.btn_cad_cargo.TabIndex = 0;
             this.btn_cad_cargo.Text = "Adicionar";
             this.btn_cad_cargo.UseVisualStyleBackColor = true;
+            this.btn_cad_cargo.Click += new System.EventHandler(this.btn_cad_cargo_Click);
             // 
             // tb_cad_nivel
             // 
             this.tb_cad_nivel.Location = new System.Drawing.Point(4, 76);
             this.tb_cad_nivel.Name = "tb_cad_nivel";
             this.tb_cad_nivel.Size = new System.Drawing.Size(121, 20);
-            this.tb_cad_nivel.TabIndex = 5;
+            this.tb_cad_nivel.TabIndex = 24;
             // 
             // label27
             // 
@@ -967,23 +812,190 @@
             this.label27.Size = new System.Drawing.Size(0, 13);
             this.label27.TabIndex = 4;
             // 
-            // btn_altera_cargo
+            // tabPage5
             // 
-            this.btn_altera_cargo.Location = new System.Drawing.Point(261, 189);
-            this.btn_altera_cargo.Name = "btn_altera_cargo";
-            this.btn_altera_cargo.Size = new System.Drawing.Size(83, 26);
-            this.btn_altera_cargo.TabIndex = 24;
-            this.btn_altera_cargo.Text = "Alterar";
-            this.btn_altera_cargo.UseVisualStyleBackColor = true;
+            this.tabPage5.AutoScroll = true;
+            this.tabPage5.Controls.Add(this.groupBox6);
+            this.tabPage5.Controls.Add(this.btn_excluir_usuario);
+            this.tabPage5.Controls.Add(this.dG_Usuarios);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(458, 333);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Hist. Usuário";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // btn_excluir_cargo
+            // groupBox6
             // 
-            this.btn_excluir_cargo.Location = new System.Drawing.Point(366, 189);
-            this.btn_excluir_cargo.Name = "btn_excluir_cargo";
-            this.btn_excluir_cargo.Size = new System.Drawing.Size(83, 26);
-            this.btn_excluir_cargo.TabIndex = 25;
-            this.btn_excluir_cargo.Text = "Excluir";
-            this.btn_excluir_cargo.UseVisualStyleBackColor = true;
+            this.groupBox6.Controls.Add(this.lb_altera_Senha);
+            this.groupBox6.Controls.Add(this.label14);
+            this.groupBox6.Controls.Add(this.label17);
+            this.groupBox6.Controls.Add(this.tb_nova_senha_usuario);
+            this.groupBox6.Controls.Add(this.label19);
+            this.groupBox6.Controls.Add(this.btn_altera_senha);
+            this.groupBox6.Location = new System.Drawing.Point(6, 262);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(236, 68);
+            this.groupBox6.TabIndex = 18;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Alterar Senha";
+            // 
+            // lb_altera_Senha
+            // 
+            this.lb_altera_Senha.AutoSize = true;
+            this.lb_altera_Senha.Location = new System.Drawing.Point(6, 63);
+            this.lb_altera_Senha.Name = "lb_altera_Senha";
+            this.lb_altera_Senha.Size = new System.Drawing.Size(10, 13);
+            this.lb_altera_Senha.TabIndex = 20;
+            this.lb_altera_Senha.Text = " ";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 63);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(10, 13);
+            this.label14.TabIndex = 16;
+            this.label14.Text = " ";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(4, 16);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(70, 13);
+            this.label17.TabIndex = 10;
+            this.label17.Text = "Nova Senha:";
+            // 
+            // tb_nova_senha_usuario
+            // 
+            this.tb_nova_senha_usuario.Location = new System.Drawing.Point(7, 32);
+            this.tb_nova_senha_usuario.Name = "tb_nova_senha_usuario";
+            this.tb_nova_senha_usuario.Size = new System.Drawing.Size(92, 20);
+            this.tb_nova_senha_usuario.TabIndex = 9;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(67, 15);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(0, 13);
+            this.label19.TabIndex = 4;
+            // 
+            // btn_altera_senha
+            // 
+            this.btn_altera_senha.Location = new System.Drawing.Point(120, 28);
+            this.btn_altera_senha.Name = "btn_altera_senha";
+            this.btn_altera_senha.Size = new System.Drawing.Size(83, 26);
+            this.btn_altera_senha.TabIndex = 0;
+            this.btn_altera_senha.Text = "Alterar";
+            this.btn_altera_senha.UseVisualStyleBackColor = true;
+            this.btn_altera_senha.Click += new System.EventHandler(this.btn_altera_senha_Click_1);
+            // 
+            // btn_excluir_usuario
+            // 
+            this.btn_excluir_usuario.Location = new System.Drawing.Point(361, 302);
+            this.btn_excluir_usuario.Name = "btn_excluir_usuario";
+            this.btn_excluir_usuario.Size = new System.Drawing.Size(75, 23);
+            this.btn_excluir_usuario.TabIndex = 11;
+            this.btn_excluir_usuario.Text = "Excluir";
+            this.btn_excluir_usuario.UseVisualStyleBackColor = true;
+            this.btn_excluir_usuario.Click += new System.EventHandler(this.btn_excluir_usuario_Click);
+            // 
+            // dG_Usuarios
+            // 
+            this.dG_Usuarios.AllowUserToOrderColumns = true;
+            this.dG_Usuarios.AutoGenerateColumns = false;
+            this.dG_Usuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dG_Usuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn1,
+            this.nomeDataGridViewTextBoxColumn1,
+            this.loginDataGridViewTextBoxColumn,
+            this.datacriacaoDataGridViewTextBoxColumn,
+            this.cargoDataGridViewTextBoxColumn,
+            this.statusDataGridViewTextBoxColumn});
+            this.dG_Usuarios.DataSource = this.tblUsuariosBindingSource1;
+            this.dG_Usuarios.Location = new System.Drawing.Point(2, 0);
+            this.dG_Usuarios.Name = "dG_Usuarios";
+            this.dG_Usuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dG_Usuarios.Size = new System.Drawing.Size(450, 256);
+            this.dG_Usuarios.TabIndex = 10;
+            this.dG_Usuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dG_Usuarios_CellContentClick);
+            // 
+            // idDataGridViewTextBoxColumn1
+            // 
+            this.idDataGridViewTextBoxColumn1.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn1.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            this.idDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // nomeDataGridViewTextBoxColumn1
+            // 
+            this.nomeDataGridViewTextBoxColumn1.DataPropertyName = "nome";
+            this.nomeDataGridViewTextBoxColumn1.HeaderText = "nome";
+            this.nomeDataGridViewTextBoxColumn1.Name = "nomeDataGridViewTextBoxColumn1";
+            // 
+            // loginDataGridViewTextBoxColumn
+            // 
+            this.loginDataGridViewTextBoxColumn.DataPropertyName = "login";
+            this.loginDataGridViewTextBoxColumn.HeaderText = "login";
+            this.loginDataGridViewTextBoxColumn.Name = "loginDataGridViewTextBoxColumn";
+            // 
+            // datacriacaoDataGridViewTextBoxColumn
+            // 
+            this.datacriacaoDataGridViewTextBoxColumn.DataPropertyName = "data_criacao";
+            this.datacriacaoDataGridViewTextBoxColumn.HeaderText = "data_criacao";
+            this.datacriacaoDataGridViewTextBoxColumn.Name = "datacriacaoDataGridViewTextBoxColumn";
+            // 
+            // cargoDataGridViewTextBoxColumn
+            // 
+            this.cargoDataGridViewTextBoxColumn.DataPropertyName = "cargo";
+            this.cargoDataGridViewTextBoxColumn.HeaderText = "cargo";
+            this.cargoDataGridViewTextBoxColumn.Name = "cargoDataGridViewTextBoxColumn";
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            // 
+            // tblUsuariosBindingSource1
+            // 
+            this.tblUsuariosBindingSource1.DataMember = "tblUsuarios";
+            this.tblUsuariosBindingSource1.DataSource = this.iloggerDataSet1;
+            // 
+            // iloggerDataSet1
+            // 
+            this.iloggerDataSet1.DataSetName = "IloggerDataSet1";
+            this.iloggerDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tblUsuariosBindingSource
+            // 
+            this.tblUsuariosBindingSource.DataMember = "tblUsuarios";
+            this.tblUsuariosBindingSource.DataSource = this.iloggerDataSetUsuarios;
+            // 
+            // iloggerDataSetUsuarios
+            // 
+            this.iloggerDataSetUsuarios.DataSetName = "IloggerDataSetUsuarios";
+            this.iloggerDataSetUsuarios.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tblCargosTableAdapter
+            // 
+            this.tblCargosTableAdapter.ClearBeforeFill = true;
+            // 
+            // tblUsuariosTableAdapter
+            // 
+            this.tblUsuariosTableAdapter.ClearBeforeFill = true;
+            // 
+            // tblUsuariosTableAdapter1
+            // 
+            this.tblUsuariosTableAdapter1.ClearBeforeFill = true;
+            // 
+            // tblCargosBindingSource1
+            // 
+            this.tblCargosBindingSource1.DataMember = "tblCargos";
+            this.tblCargosBindingSource1.DataSource = this.iloggerDataSet;
             // 
             // Form1
             // 
@@ -1006,18 +1018,23 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabPage4.ResumeLayout(false);
-            this.tabPage5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dG_Usuarios)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCargos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCargo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblCargosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iloggerDataSet)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dG_Usuarios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblUsuariosBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iloggerDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblUsuariosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iloggerDataSetUsuarios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblCargosBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1068,36 +1085,12 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btn_add_usuario;
         private System.Windows.Forms.Label lb_addUser;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Label lb_removeUser;
-        private System.Windows.Forms.ComboBox cb_Usuarios;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Button btn_remove_usuario;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox tb_nova_senha_usuario;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox tb_altera_usuario;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Label lb_altera_Senha;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ComboBox cb_Cargo;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox tb_nome_usuario;
-        private System.Windows.Forms.DataGridView dgvCargos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.DataGridView dG_Usuarios;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Login;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox tb_cad_cargo;
@@ -1107,7 +1100,36 @@
         private System.Windows.Forms.TextBox tb_cad_nivel;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Button btn_excluir_cargo;
-        private System.Windows.Forms.Button btn_altera_cargo;
+        private IloggerDataSet iloggerDataSet;
+        private System.Windows.Forms.BindingSource tblCargosBindingSource;
+        private IloggerDataSetTableAdapters.tblCargosTableAdapter tblCargosTableAdapter;
+        private IloggerDataSetUsuarios iloggerDataSetUsuarios;
+        private System.Windows.Forms.BindingSource tblUsuariosBindingSource;
+        private IloggerDataSetUsuariosTableAdapters.tblUsuariosTableAdapter tblUsuariosTableAdapter;
+        private System.Windows.Forms.DataGridView dgCargo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nivelDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btn_excluir_usuario;
+        private IloggerDataSet1 iloggerDataSet1;
+        private System.Windows.Forms.BindingSource tblUsuariosBindingSource1;
+        private IloggerDataSet1TableAdapters.tblUsuariosTableAdapter tblUsuariosTableAdapter1;
+        private System.Windows.Forms.DataGridView dG_Usuarios;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn loginDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn datacriacaoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cargoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label lb_altera_Senha;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox tb_nova_senha_usuario;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button btn_altera_senha;
+        private System.Windows.Forms.BindingSource tblCargosBindingSource1;
     }
 }
 

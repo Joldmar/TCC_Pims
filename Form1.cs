@@ -351,8 +351,8 @@ namespace TesteOPC
                 throw;
             }
         }
-
-        private void btn_testar_conexao_Click(object sender, EventArgs e)
+        //====================================================================================================================================================================
+        private void btn_testar_conexao_Click(object sender, EventArgs e)// cria conexão com o banco de dados
         {
             criar_conexao();
             /*
@@ -499,11 +499,11 @@ namespace TesteOPC
                 } // Fim da criação da Tabela Servidores
 
 
-                try // Criando a Tabela Itens
+                try // Criando a Tabela TAGs
                 {
                     string connectionString2 = @"Data Source=" + tb_servidor_sql.Text + ";Initial Catalog=Ilogger;User ID=" + tb_usuario_sql.Text + ";Password=" + tb_senha_sql.Text;
                     SqlConnection con2 = new SqlConnection(connectionString2);
-                    SqlCommand cmd2 = new SqlCommand("CREATE TABLE [dbo].[tblItens]([id] [int] IDENTITY(1,1) NOT NULL, [endereco_item] [varchar](100) NOT NULL,	[tag] [varchar](50) NOT NULL, [servidor] [varchar](100) NOT NULL, [tipo_valor] [varchar](15) NOT NULL, CONSTRAINT [PK_tblItens] PRIMARY KEY CLUSTERED ([endereco_item] ASC, [servidor] ASC) WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]) ON [PRIMARY]", con2);
+                    SqlCommand cmd2 = new SqlCommand("CREATE TABLE [dbo].[tblTag]([id] [int] IDENTITY(1,1) NOT NULL, [grupo] [varchar](45) NOT NULL,[tag] [varchar](45) NOT NULL, [servidor] [varchar](45) NOT NULL, CONSTRAINT [PK_tblTag] PRIMARY KEY CLUSTERED ([id] ASC) WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]) ON [PRIMARY]", con2);
                     SqlDataReader myReader2;
 
                     con2.Open();
@@ -513,17 +513,35 @@ namespace TesteOPC
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("A tabela Itens não foi criada.");
-                } // Fim da criação da Tabela Itens
+                    MessageBox.Show("A tabela Tag não foi criada.");
+                } // Fim da criação da Tabela Tags
 
+            
+             try // Criando a Tabela Tag_valor
+            {
+                string connectionString2 = @"Data Source=" + tb_servidor_sql.Text + ";Initial Catalog=Ilogger;User ID=" + tb_usuario_sql.Text + ";Password=" + tb_senha_sql.Text;
+                SqlConnection con2 = new SqlConnection(connectionString2);
+                SqlCommand cmd2 = new SqlCommand("CREATE TABLE [dbo].[tblTag_valor]([id] [int] IDENTITY(1,1) NOT NULL, [tag] [int] NOT NULL, [valor] [varchar](20) NOT NULL, [dataAtu] [date] NOT NULL, CONSTRAINT [PK_tblTag_valor] PRIMARY KEY CLUSTERED ([id] ASC) WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]) ON [PRIMARY]", con2);
+                SqlDataReader myReader2;
+
+                con2.Open();
+                myReader2 = cmd2.ExecuteReader();
+                con2.Close();
+                //int_criar_tblUsuario = 1;
             }
+            catch (Exception)
+            {
+                MessageBox.Show("A tabela Tag_valor não foi criada.");
+            } // Fim da criação da Tabela Tag_valor
+
+        }
             catch (Exception)
             {
                 MessageBox.Show("Não foi possível criar o banco de dados.");
             }
 
             criarTabelasDinamicas();
-            MessageBox.Show("Foram criadas as tabelas: " + verificaTabelas());
+            //MessageBox.Show("Foram criadas as tabelas: " + verificaTabelas());
         }
 
         //====================================================================================================================================================================
@@ -544,6 +562,8 @@ namespace TesteOPC
 
                 string connectionString2 = @"Data Source=" + tb_servidor_sql.Text + ";Initial Catalog=Ilogger;User ID=" + tb_usuario_sql.Text + ";Password=" + tb_senha_sql.Text;
                 SqlConnection con2 = new SqlConnection(connectionString2);
+
+                // SqlCommand cmd = conexao.CreateCommand();
                 SqlCommand cmd2 = new SqlCommand("CREATE TABLE [dbo].[tbValor_" + nomeTabela + "]([data_time] [datetime] NOT NULL,[valor] [varchar](20) NOT NULL) ON [PRIMARY]; ALTER TABLE [dbo].[tbValor_" + nomeTabela + "] ADD  CONSTRAINT [tbValor_" + nomeTabela + "_data_time]  DEFAULT (getdate()) FOR [data_time];", con2);
                 SqlDataReader myReader2;
                 con2.Open();
@@ -928,15 +948,15 @@ namespace TesteOPC
         {
 
         }
-
-        private void button7_Click(object sender, EventArgs e)
+        //====================================================================================================================================================================
+        private void button7_Click(object sender, EventArgs e)//Criado apenas para a fase de testes. Para conectar mais rápido ao banco
         {
             tb_servidor_sql.SelectedIndex = 1;
             tb_usuario_sql.Text = "sa";
             tb_senha_sql.Text = "PlantPAx4";
             criar_conexao();
         }
-
+        //====================================================================================================================================================================
         private void btn_excluir_cargo_Click(object sender, EventArgs e)
         {
             int selectedrowindex = dgCargo.SelectedCells[0].RowIndex;
@@ -964,7 +984,6 @@ namespace TesteOPC
             atualizaDataGridUsuario();
         }
 
-        //private void btn_altera_senha_Click(object sender, EventArgs e)
         private void btn_altera_senha_Click_1(object sender, EventArgs e)
         {
             int selectedrowindex = dG_Usuarios.SelectedCells[0].RowIndex;

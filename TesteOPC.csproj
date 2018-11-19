@@ -49,6 +49,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuscaCargos.cs">
+      <DependentUpon>BuscaCargos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="BuscaCargos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BuscaCargos.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +93,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="app.config" />
+    <None Include="BuscaCargos.xsc">
+      <DependentUpon>BuscaCargos.xsd</DependentUpon>
+    </None>
+    <None Include="BuscaCargos.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BuscaCargos.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BuscaCargos.xss">
+      <DependentUpon>BuscaCargos.xsd</DependentUpon>
+    </None>
     <None Include="IloggerDataSet.xsc">
       <DependentUpon>IloggerDataSet.xsd</DependentUpon>
     </None>

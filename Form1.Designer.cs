@@ -73,6 +73,8 @@
             this.lb_addUser = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.cb_Cargo = new System.Windows.Forms.ComboBox();
+            this.tblCargosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.iloggerDataSet = new TesteOPC.IloggerDataSet();
             this.label12 = new System.Windows.Forms.Label();
             this.tb_senha_usuario = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -84,8 +86,6 @@
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nivelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tblCargosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.iloggerDataSet = new TesteOPC.IloggerDataSet();
             this.btn_excluir_cargo = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label22 = new System.Windows.Forms.Label();
@@ -119,6 +119,7 @@
             this.tblUsuariosTableAdapter = new TesteOPC.IloggerDataSetUsuariosTableAdapters.tblUsuariosTableAdapter();
             this.tblUsuariosTableAdapter1 = new TesteOPC.IloggerDataSet1TableAdapters.tblUsuariosTableAdapter();
             this.tblCargosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.button6 = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -128,10 +129,10 @@
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgCargo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblCargosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iloggerDataSet)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCargo)).BeginInit();
             this.groupBox7.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -537,6 +538,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.button6);
             this.tabPage3.Controls.Add(this.groupBox2);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -602,8 +604,6 @@
             // 
             // cb_Cargo
             // 
-            this.cb_Cargo.DataSource = this.tblCargosBindingSource;
-            this.cb_Cargo.DisplayMember = "nome";
             this.cb_Cargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_Cargo.FormattingEnabled = true;
             this.cb_Cargo.Location = new System.Drawing.Point(229, 75);
@@ -611,6 +611,16 @@
             this.cb_Cargo.Size = new System.Drawing.Size(125, 21);
             this.cb_Cargo.TabIndex = 20;
             this.cb_Cargo.SelectedIndexChanged += new System.EventHandler(this.cb_Cargo_SelectedIndexChanged);
+            // 
+            // tblCargosBindingSource
+            // 
+            this.tblCargosBindingSource.DataMember = "tblCargos";
+            this.tblCargosBindingSource.DataSource = this.iloggerDataSet;
+            // 
+            // iloggerDataSet
+            // 
+            this.iloggerDataSet.DataSetName = "IloggerDataSet";
+            this.iloggerDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label12
             // 
@@ -716,16 +726,6 @@
             this.nivelDataGridViewTextBoxColumn.DataPropertyName = "nivel";
             this.nivelDataGridViewTextBoxColumn.HeaderText = "nivel";
             this.nivelDataGridViewTextBoxColumn.Name = "nivelDataGridViewTextBoxColumn";
-            // 
-            // tblCargosBindingSource
-            // 
-            this.tblCargosBindingSource.DataMember = "tblCargos";
-            this.tblCargosBindingSource.DataSource = this.iloggerDataSet;
-            // 
-            // iloggerDataSet
-            // 
-            this.iloggerDataSet.DataSetName = "IloggerDataSet";
-            this.iloggerDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btn_excluir_cargo
             // 
@@ -997,6 +997,16 @@
             this.tblCargosBindingSource1.DataMember = "tblCargos";
             this.tblCargosBindingSource1.DataSource = this.iloggerDataSet;
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(134, 202);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(83, 26);
+            this.button6.TabIndex = 24;
+            this.button6.Text = "Adicionar";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click_3);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1020,10 +1030,10 @@
             this.tabPage3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgCargo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblCargosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iloggerDataSet)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgCargo)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.tabPage5.ResumeLayout(false);
@@ -1130,6 +1140,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button btn_altera_senha;
         private System.Windows.Forms.BindingSource tblCargosBindingSource1;
+        private System.Windows.Forms.Button button6;
     }
 }
 

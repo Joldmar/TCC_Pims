@@ -103,6 +103,12 @@ namespace TesteOPC
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            lerTag = false;
+            rtc = 0;
+            oGrp = null;
+            OpcServer srv2 = new OpcServer();
+            srv.Connect("Localhost", servidorOpc);
+
             //Cadastra os subcampos da lista na tela com as variáveis do array de resultados
             itensValor = new string[tags.Count];
             for (int i = 0; i < tags.Count; i++)
@@ -111,7 +117,7 @@ namespace TesteOPC
                 lv_tagList.Items[i].SubItems.Add(itensValor[i]);
             }
 
-            lerTag = true;
+
 
             if (servidorOpc == "")
             {
@@ -156,9 +162,16 @@ namespace TesteOPC
 
             //Esse aqui é o evento em paralelo a execução do botão, que faz a leitura contínua do tag:]
             //O seu código está no método logo abaixo, chamado bwLer_DoWork
+            lerTag = true;
+            
             if (bwLer.IsBusy == false)
             {
                 bwLer.RunWorkerAsync();
+            } else
+            {
+                bwLer.CancelAsync();
+                bwLer.RunWorkerAsync();
+
             }
         }
 
@@ -192,18 +205,44 @@ namespace TesteOPC
                             lv_tagList.Items[i].SubItems[1].Text = rslt[i].DataValue.ToString();
                             itensValor[i] = rslt[i].DataValue.ToString();
 
-                            string nomeTabela = "tbValor_" + tags[i].Substring(shortcut.Length);
+                            string nomeTag = tags[i].Substring(shortcut.Length);
 
-                            insertDb(nomeTabela, rslt[i].DataValue.ToString());
+
+                            insertDb(buscaTagId(nomeTag), rslt[i].DataValue.ToString());
 
                         }));
 
                     }
+                    System.Threading.Thread.Sleep(tempoScan);
                 }
-                System.Threading.Thread.Sleep(tempoScan);
+                
             }
             //Esse método abaixo faz a desconexão com o OPC Server.
             srv.Disconnect();
+        }
+
+        private int buscaTagId(string nomeTag)
+        {
+            if (!abrir_conexao())
+            {
+                return -1;
+
+            }
+
+            //SqlCommand cmd = conexao.CreateCommand();
+            SqlCommand cmd = new SqlCommand("SELECT id FROM [Ilogger].[dbo].[tblTag] WHERE tag = '" + nomeTag + "'", conexao);
+            try
+            {
+                int valor = Convert.ToInt32(cmd.ExecuteScalar());
+                conexao.Close();
+                return valor;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Erro na comunicação com o banco de dados");
+                conexao.Close();
+                return -1;
+            }
         }
 
 
@@ -284,14 +323,52 @@ namespace TesteOPC
 
         }
 
+        private bool criarTag(string nome)
+        {
+            if (!abrir_conexao())
+            {
+                return false;
+
+            }
+
+            SqlCommand cmd = conexao.CreateCommand();
+            cmd.CommandText = "INSERT INTO [Ilogger].[dbo].[tblTag]([grupo],[tag],[servidor])VALUES('" + shortcut + "','" + nome + "','RSlinx OPC Server')";
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                conexao.Close();
+                return true;
+
+            }
+            catch (Exception)
+            {
+                conexao.Close();
+                return false;
+            }
+
+        }
+
         private void button4_Click(object sender, EventArgs e)
         {
+            if (lerTag)
+            {
+                if (MessageBox.Show("Adicionar um novo tag irá parar a execução de leitura, deseja continuar?", "Novo Tag", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.No)
+                {
+                    return;
+                }
+            }
+            lerTag = false;
             //if (criarTabelaValor(tb_tag.Text))
             //{
             //adiciona o tag na view list e na lista de tags
-            criarTabelaValor(tb_tag.Text);
-            lv_tagList.Items.Add(new ListViewItem(tb_tag.Text));
-            tags.Add(shortcut + tb_tag.Text);
+            //criarTabelaValor(tb_tag.Text);
+            if (criarTag(tb_tag.Text))
+            {
+                lv_tagList.Items.Add(new ListViewItem(tb_tag.Text));
+                tags.Add(shortcut + tb_tag.Text);
+            }
+
             //}
             //else
             //{
@@ -327,53 +404,43 @@ namespace TesteOPC
         //==============================================================================================
         // Persistência (banco de dados)
 
-        private int int_criar_tblUsuario = 0;
-        private int int_criar_tblServidores = 0;
-        private int int_criar_tblItens = 0;
+        // private int int_criar_tblUsuario = 0;
+        // private int int_criar_tblServidores = 0;
+        // private int int_criar_tblItens = 0;
 
 
-        private bool insertDb(string nomeTabela, string valor)
+        private bool insertDb(int idTag, string valor)
         {
+            if (!abrir_conexao())
+            {
+                return false;
+            }
+
+
+            SqlCommand cmd = conexao.CreateCommand();
+            cmd.CommandText = "INSERT INTO [Ilogger].[dbo].[tblTag_valor]([tag],[valor],[dataAtu])VALUES (" + idTag + ", '" + valor + "', CURRENT_TIMESTAMP)";
+
             try
             {
-                string connectionString2 = @"Data Source=" + tb_servidor_sql.Text + ";Initial Catalog=Ilogger;User ID=" + tb_usuario_sql.Text + ";Password=" + tb_senha_sql.Text;
-                SqlConnection con2 = new SqlConnection(connectionString2);
-                SqlCommand cmd2 = new SqlCommand("INSERT INTO [Ilogger].[dbo].[" + nomeTabela + "] (valor) VALUES (" + valor + ");", con2);
-                SqlDataReader myReader2;
-                con2.Open();
-                myReader2 = cmd2.ExecuteReader();
-                con2.Close();
+                cmd.ExecuteNonQuery();
+                conexao.Close();
                 return true;
             }
             catch (Exception)
             {
+
+                MessageBox.Show("Erro!");
+                conexao.Close();
                 return false;
-                throw;
             }
+
         }
+
+
         //====================================================================================================================================================================
         private void btn_testar_conexao_Click(object sender, EventArgs e)// cria conexão com o banco de dados
         {
             criar_conexao();
-            /*
-            string connectionString = @"Data Source=" + tb_servidor_sql.Text + ";" +
-          "User ID=" + tb_usuario_sql.Text + ";" +
-          "Password=" + tb_senha_sql.Text;
-
-            SqlConnection con = new SqlConnection(connectionString);
-            try
-            {
-                con.Open();
-                lb_serverStatus.Text = "Conexão Realizada com Sucesso!";
-                lb_serverStatus.ForeColor = Color.Green;
-                con.Close();
-            }
-            catch (Exception)
-            {
-                lb_serverStatus.Text = "Falhou Conexão";
-                lb_serverStatus.ForeColor = Color.Red;
-            }
-            */
         }
         //====================================================================================================================================================================
         private void criar_conexao()// Método para criar conexão com o banco de dados
@@ -416,10 +483,9 @@ namespace TesteOPC
             }
             else
             {
+                MessageBox.Show("Nenhuma conexão com o banco de dados foi estabelecida!");
                 return false;
             }
-
-
         }
 
 
@@ -455,7 +521,7 @@ namespace TesteOPC
                     con2.Open();
                     myReader2 = cmd2.ExecuteReader();
                     con2.Close();
-                    int_criar_tblUsuario = 1;
+                    // int_criar_tblUsuario = 1;
                 }
                 catch (Exception)
                 {
@@ -473,7 +539,7 @@ namespace TesteOPC
                     con2.Open();
                     myReader2 = cmd2.ExecuteReader();
                     con2.Close();
-                    int_criar_tblUsuario = 1;
+                    //int_criar_tblUsuario = 1;
                 }
                 catch (Exception)
                 {
@@ -485,13 +551,13 @@ namespace TesteOPC
                 {
                     string connectionString2 = @"Data Source=" + tb_servidor_sql.Text + ";Initial Catalog=Ilogger;User ID=" + tb_usuario_sql.Text + ";Password=" + tb_senha_sql.Text;
                     SqlConnection con2 = new SqlConnection(connectionString2);
-                    SqlCommand cmd2 = new SqlCommand("CREATE TABLE [dbo].[tblServidores]([nome_servidor] [varchar](100) NOT NULL, [status_conexao] [int] NULL, CONSTRAINT [PK_tblServidores] PRIMARY KEY CLUSTERED ([nome_servidor] ASC) WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]) ON [PRIMARY]", con2);
+                    SqlCommand cmd2 = new SqlCommand("CREATE TABLE [dbo].[tblServidores]([id] [int] IDENTITY(1,1) NOT NULL,[nome_servidor] [varchar](100) NOT NULL, [status_conexao] [int] NULL, CONSTRAINT [PK_tblServidores] PRIMARY KEY CLUSTERED ([id] ASC) WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]) ON [PRIMARY]", con2);
                     SqlDataReader myReader2;
 
                     con2.Open();
                     myReader2 = cmd2.ExecuteReader();
                     con2.Close();
-                    int_criar_tblUsuario = 1;
+                    //int_criar_tblUsuario = 1;
                 }
                 catch (Exception)
                 {
@@ -509,49 +575,51 @@ namespace TesteOPC
                     con2.Open();
                     myReader2 = cmd2.ExecuteReader();
                     con2.Close();
-                    int_criar_tblUsuario = 1;
+                    //int_criar_tblUsuario = 1;
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("A tabela Tag não foi criada.");
                 } // Fim da criação da Tabela Tags
 
-            
-             try // Criando a Tabela Tag_valor
-            {
-                string connectionString2 = @"Data Source=" + tb_servidor_sql.Text + ";Initial Catalog=Ilogger;User ID=" + tb_usuario_sql.Text + ";Password=" + tb_senha_sql.Text;
-                SqlConnection con2 = new SqlConnection(connectionString2);
-                SqlCommand cmd2 = new SqlCommand("CREATE TABLE [dbo].[tblTag_valor]([id] [int] IDENTITY(1,1) NOT NULL, [tag] [int] NOT NULL, [valor] [varchar](20) NOT NULL, [dataAtu] [date] NOT NULL, CONSTRAINT [PK_tblTag_valor] PRIMARY KEY CLUSTERED ([id] ASC) WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]) ON [PRIMARY]", con2);
-                SqlDataReader myReader2;
 
-                con2.Open();
-                myReader2 = cmd2.ExecuteReader();
-                con2.Close();
-                //int_criar_tblUsuario = 1;
+                try // Criando a Tabela Tag_valor
+                {
+                    string connectionString2 = @"Data Source=" + tb_servidor_sql.Text + ";Initial Catalog=Ilogger;User ID=" + tb_usuario_sql.Text + ";Password=" + tb_senha_sql.Text;
+                    SqlConnection con2 = new SqlConnection(connectionString2);
+                    SqlCommand cmd2 = new SqlCommand("CREATE TABLE [dbo].[tblTag_valor]([id] [int] IDENTITY(1,1) NOT NULL, [tag] [int] NOT NULL, [valor] [varchar](20) NOT NULL, [dataAtu] [datetime] NOT NULL, CONSTRAINT [PK_tblTag_valor] PRIMARY KEY CLUSTERED ([id] ASC) WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]) ON [PRIMARY]", con2);
+                    SqlDataReader myReader2;
+
+                    con2.Open();
+                    myReader2 = cmd2.ExecuteReader();
+                    con2.Close();
+                    //int_criar_tblUsuario = 1;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("A tabela Tag_valor não foi criada.");
+                } // Fim da criação da Tabela Tag_valor
+
             }
-            catch (Exception)
-            {
-                MessageBox.Show("A tabela Tag_valor não foi criada.");
-            } // Fim da criação da Tabela Tag_valor
-
-        }
             catch (Exception)
             {
                 MessageBox.Show("Não foi possível criar o banco de dados.");
             }
 
-            criarTabelasDinamicas();
+            //criarTabelasDinamicas();
             //MessageBox.Show("Foram criadas as tabelas: " + verificaTabelas());
         }
-
         //====================================================================================================================================================================
-        private void criarTabelasDinamicas()//criando as tabelas dinamicamente de acordo com as variáveis previamente cadastradas
-        {
-            foreach (string tag in tags)
-            {
-                criarTabelaValor(tag.Substring(shortcut.Length));
-            }
-        }
+        //private void criarTabelasDinamicas()//criando as tabelas dinamicamente de acordo com as variáveis previamente cadastradas
+        //{
+        //    foreach (string tag in tags)
+        //    {
+        //        criarTabelaValor(tag.Substring(shortcut.Length));
+        //    }
+        //}
+
+
+
 
 
         private bool criarTabelaValor(string nomeTabela)
@@ -562,8 +630,6 @@ namespace TesteOPC
 
                 string connectionString2 = @"Data Source=" + tb_servidor_sql.Text + ";Initial Catalog=Ilogger;User ID=" + tb_usuario_sql.Text + ";Password=" + tb_senha_sql.Text;
                 SqlConnection con2 = new SqlConnection(connectionString2);
-
-                // SqlCommand cmd = conexao.CreateCommand();
                 SqlCommand cmd2 = new SqlCommand("CREATE TABLE [dbo].[tbValor_" + nomeTabela + "]([data_time] [datetime] NOT NULL,[valor] [varchar](20) NOT NULL) ON [PRIMARY]; ALTER TABLE [dbo].[tbValor_" + nomeTabela + "] ADD  CONSTRAINT [tbValor_" + nomeTabela + "_data_time]  DEFAULT (getdate()) FOR [data_time];", con2);
                 SqlDataReader myReader2;
                 con2.Open();
@@ -671,6 +737,27 @@ namespace TesteOPC
         }
 
         //=====================================================================================================================================================================
+
+        private void carregaCargos()
+        {
+            if (!abrir_conexao())
+            {
+                return;
+            }
+
+            SqlDataAdapter sqlDataCargos = new SqlDataAdapter("SELECT [nome] FROM [Ilogger].[dbo].[tblCargos]", conexao);
+            DataSet dataSetCargos = new DataSet("Cargos");
+
+            sqlDataCargos.Fill(dataSetCargos, "Cargos");
+            DataTable dataTableCargos = dataSetCargos.Tables["Cargos"];
+
+            //parei aqui
+            foreach(DataRow dr in dataTableCargos.Rows)
+            {
+                Object[] a = dr.ItemArray;
+            }
+        }
+
         private void add_cargo()//Adiciona Cargos ao sistema 
         {
             if (!abrir_conexao())
@@ -723,7 +810,6 @@ namespace TesteOPC
                 else
                 {
                     MessageBox.Show("Não é possível adicionar um cargo. Preencha esse campo com no minímo 3 caracteres!");
-
                 }
             }
             else
@@ -738,7 +824,6 @@ namespace TesteOPC
             if (!abrir_conexao())
             {
                 return;
-
             }
 
             SqlCommand cmd = conexao.CreateCommand();
@@ -911,7 +996,7 @@ namespace TesteOPC
 
         private void cb_Cargo_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            carregaCargos();
         }
 
         private void tb_senha_usuario_TextChanged(object sender, EventArgs e)
@@ -1033,7 +1118,10 @@ namespace TesteOPC
             //setInvisible();
         }
 
-
+        private void button6_Click_3(object sender, EventArgs e)
+        {
+            carregaCargos();
+        }
     }
 }
 
